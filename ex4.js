@@ -1,5 +1,6 @@
 (function () {
 
+
     document.addEventListener("DOMContentLoaded", function () {
 
         // Listen for the click event on the "+" button with id "addPic"
@@ -20,6 +21,8 @@
     const play = function () {
 
         const images = {};
+
+        let focusedImageId;
 
         function handleImageSelection(event) {
             const fileInput = event.target;
@@ -54,6 +57,7 @@
                 focusImage(imageId);
             });
         }
+
         // Function to focus the image for keyboard control
         function focusImage(imageId) {
             focusedImageId = imageId;
@@ -70,14 +74,9 @@
 
                 if (arrowKeys.includes(event.key)) {
                     event.preventDefault();
-
                     let deltaX = 0;
                     let deltaY = 0;
 
-                    if (event.key === "ArrowUp") deltaY = -moveDistance;
-                    if (event.key === "ArrowDown") deltaY = moveDistance;
-                    if (event.key === "ArrowLeft") deltaX = -moveDistance;
-                    if (event.key === "ArrowRight") deltaX = moveDistance;
 
                     const focusedImage = images[focusedImageId];
                     const imageRect = focusedImage.getBoundingClientRect();
@@ -85,23 +84,33 @@
                     const currentTop = parseFloat(focusedImage.style.top);
                     const rectangleRect = document.querySelector(".rectangle").getBoundingClientRect();
 
+                    console.log("rectangleRect.top " + rectangleRect.top);
+                    console.log("rectangleRect.left " + rectangleRect.left);
+                    console.log("imageRect.top " + imageRect.top);
+                    console.log("imageRect.left " + imageRect.left);
+
+                    if (event.key === "ArrowUp")
+                        if (imageRect.top - moveDistance > rectangleRect.top) deltaY = -moveDistance;
+
+                    if (event.key === "ArrowDown")
+                        if(imageRect.top + moveDistance < rectangleRect.top + 195)  deltaY = moveDistance;
+
+                    if (event.key === "ArrowLeft")
+                        if(imageRect.left - moveDistance  > rectangleRect.left ) deltaX = -moveDistance;
+
+                    if (event.key === "ArrowRight")
+                        if(imageRect.left + moveDistance  < rectangleRect.left + 420 ) deltaX = moveDistance;
+
+                    // deltaX = moveDistance;
+
+
                     // Calculate the new position
                     const newLeft = currentLeft + deltaX;
                     const newTop = currentTop + deltaY;
 
-                    // Calculate the boundaries of the rectangle relative to the window
-                    const minX = rectangleRect.left + window.pageXOffset;
-                    const maxX = rectangleRect.right - imageRect.width + window.pageXOffset;
-                    const minY = rectangleRect.top + window.pageYOffset;
-                    const maxY = rectangleRect.bottom - imageRect.height + window.pageYOffset;
-
-                    // Check if the new position exceeds the rectangle boundaries
-                    const constrainedLeft = Math.min(Math.max(newLeft, minX), maxX);
-                    const constrainedTop = Math.min(Math.max(newTop, minY), maxY);
-
                     // Apply the transformation
-                    focusedImage.style.left = `${constrainedLeft}px`;
-                    focusedImage.style.top = `${constrainedTop}px`;
+                    focusedImage.style.left = `${newLeft}px`;
+                    focusedImage.style.top = `${newTop}px`;
                 }
             }
         }
