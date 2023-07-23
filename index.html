@@ -10,6 +10,12 @@
     <script src="ex4.js">
     </script>
     <title>ex4 Yarden Cohen Anael Mizrahi</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Square</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -17,113 +23,26 @@
         crossorigin="anonymous">
 
 </script>
-
-<div class="container">
-
-    <div class="row ">
-        <div class="col bg-light ">
-            <h2 class="text-center">Memory Game</h2>
-            <h2 class="text-center">Mini exercise</h2>
-            <h6 class="text-center">Click on the cards to flip them and find the <br>
-                matching pairs with as little flips as possible.</h6>
-        </div>
-    </div>
-    <div class="d-block" id="setting">
-        <div class="row">
-
-            <form class="needs-validation" novalidate id="register-form" action="" method="post">
-                <div class="col-6">
-
-                    <label>Your Name</label>
-                    <input class="form-control" type="text" name="username"
-                           placeholder="Your name including letters and digits only"
-                           aria-label="default input example">
-                    <p class="error username-error"></p>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Play</button>
-
-                <button type="button" id="settingButton" class="btn btn-light">Setting</button>
-
-                <button type="button" id="HighScore" class="btn btn-light" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">High Scores
-                </button>
-
-            </form>
-            <div class="d-none" id="addSetting">
-                <div class="row">
-                    <div class="col-md-12 col-lg-6 ">
-                        <label for="numOfRows">Number of rows</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
-                                id="numOfRows">
-                            <option>2</option>
-                            <option>3</option>
-                            <option selected>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="col-md-12 col-lg-6">
-                        <label for="numOfCols">Number of cols</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
-                                id="numOfCols">
-                            <option>2</option>
-                            <option>3</option>
-                            <option selected>4</option>
-                            <option>5</option>
-                        </select>
-                        <p class="error-grid"></p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-6 ">
-                        <label for="numOfSeconds">Delay (in seconds)</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
-                                id="numOfSeconds">
-                            <option selected>0.5</option>
-                            <option>1.0</option>
-                            <option>1.5</option>
-                            <option>2.0</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Leaderboard</h1>
-                        </div>
-                        <div class="modal-body">
-                            <table class="table table-striped" id="modalScore">
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div id="Game" class=" d-none">
-        <div class="steps"></div>
-
-        <div id="grid"></div>
-        <button type="button" id="backButton" class="btn btn-primary ">Back</button>
-    </div>
-
-    <div id="win" class="d-none">
-        <h2> Game Over!</h2>
-        <div class="winText "></div>
-        <table class="table table-striped" id="Score">
-        </table>
-        <button type="button" id="okButton" class="btn btn-primary ">Ok</button>
+<body>
+<div class="container d-flex flex-column align-items-center justify-content-center mt-5">
+    <h2 class="mb-4">Mini exercise</h2>
+    <div class="rectangle d-flex align-items-center justify-content-center position-relative">
+        <button type="button" class="btn btn-primary btn-lg position-absolute" style="right: -60px;"
+                id="addPic">+</button>
     </div>
 </div>
+
+<!-- Custom CSS for the square -->
+<style>
+    .rectangle {
+        width: 500px;
+        height: 300px;
+        background-color: transparent;
+        border: 5px solid #007bff; /* Blue color for the border, change it to your desired color */
+        position: relative; /* Ensure position is set to relative */
+    }
+</style>
+
+</body>
 </body>
 </html>
