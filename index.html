@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+
+    <script src="ex4.js">
+    </script>
+    <title>ex4 Yarden Cohen Anael Mizrahi</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous">
+
+</script>
+
+<div class="container">
+
+    <div class="row ">
+        <div class="col bg-light ">
+            <h2 class="text-center">Memory Game</h2>
+            <h6 class="text-center">Click on the cards to flip them and find the <br>
+                matching pairs with as little flips as possible.</h6>
+        </div>
+    </div>
+    <div class="d-block" id="setting">
+        <div class="row">
+
+            <form class="needs-validation" novalidate id="register-form" action="" method="post">
+                <div class="col-6">
+
+                    <label>Your Name</label>
+                    <input class="form-control" type="text" name="username"
+                           placeholder="Your name including letters and digits only"
+                           aria-label="default input example">
+                    <p class="error username-error"></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Play</button>
+
+                <button type="button" id="settingButton" class="btn btn-light">Setting</button>
+
+                <button type="button" id="HighScore" class="btn btn-light" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">High Scores
+                </button>
+
+            </form>
+            <div class="d-none" id="addSetting">
+                <div class="row">
+                    <div class="col-md-12 col-lg-6 ">
+                        <label for="numOfRows">Number of rows</label>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+                                id="numOfRows">
+                            <option>2</option>
+                            <option>3</option>
+                            <option selected>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <label for="numOfCols">Number of cols</label>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+                                id="numOfCols">
+                            <option>2</option>
+                            <option>3</option>
+                            <option selected>4</option>
+                            <option>5</option>
+                        </select>
+                        <p class="error-grid"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 ">
+                        <label for="numOfSeconds">Delay (in seconds)</label>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+                                id="numOfSeconds">
+                            <option selected>0.5</option>
+                            <option>1.0</option>
+                            <option>1.5</option>
+                            <option>2.0</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Leaderboard</h1>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-striped" id="modalScore">
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div id="Game" class=" d-none">
+        <div class="steps"></div>
+
+        <div id="grid"></div>
+        <button type="button" id="backButton" class="btn btn-primary ">Back</button>
+    </div>
+
+
+    <div id="win" class="d-none">
+        <h2> Game Over!</h2>
+        <div class="winText "></div>
+        <table class="table table-striped" id="Score">
+        </table>
+        <button type="button" id="okButton" class="btn btn-primary ">Ok</button>
+    </div>
+</div>
+</body>
+</html>
