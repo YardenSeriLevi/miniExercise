@@ -1,5 +1,10 @@
 (function () {
 
+    const RECTANGLE_HEIGHT = 300;
+    const RECTANGLE_WIDTH = 500;
+    const IMAGE_HEIGHT = 50;
+    const IMAGE_WIDTH = 50;
+    const OFFSET = 5;
 
     document.addEventListener("DOMContentLoaded", function () {
 
@@ -37,17 +42,17 @@
             const rectangle = document.querySelector(".rectangle");
             const rectangleWidth = rectangle.offsetWidth;
             const rectangleHeight = rectangle.offsetHeight;
-            const imgWidth = 100; // You can adjust this width as needed
-            const imgHeight = 100; // You can adjust this height as needed
+            const imgWidth = 100;
+            const imgHeight = 100;
 
             const randomLeft = Math.floor(Math.random() * (rectangleWidth - imgWidth));
             const randomTop = Math.floor(Math.random() * (rectangleHeight - imgHeight));
             imgPreview.style.position = "absolute";
             imgPreview.style.left = `${randomLeft}px`;
             imgPreview.style.top = `${randomTop}px`;
-            imgPreview.style.maxWidth = "100px";
-            imgPreview.style.maxHeight = "100px";
-
+            imgPreview.style.width = "50px"; // Set the width explicitly to 100 pixels
+            imgPreview.style.height = "50px"; // Set the height explicitly to 100 pixels
+            imgPreview.style.objectFit = "cover"; // Ensure the image fits without distortion
             // Set the unique identifier as a data attribute for the image element
             imgPreview.setAttribute("data-image-id", imageId);
 
@@ -90,19 +95,18 @@
                     console.log("imageRect.left " + imageRect.left);
 
                     if (event.key === "ArrowUp")
-                        if (imageRect.top - moveDistance > rectangleRect.top) deltaY = -moveDistance;
+                        if (imageRect.top - moveDistance > rectangleRect.top + OFFSET) deltaY = -moveDistance;
 
                     if (event.key === "ArrowDown")
-                        if(imageRect.top + moveDistance < rectangleRect.top + 195)  deltaY = moveDistance;
+                        if(imageRect.top + moveDistance < rectangleRect.top + RECTANGLE_HEIGHT - IMAGE_HEIGHT - OFFSET)
+                            deltaY = moveDistance;
 
                     if (event.key === "ArrowLeft")
-                        if(imageRect.left - moveDistance  > rectangleRect.left ) deltaX = -moveDistance;
+                        if(imageRect.left - moveDistance  > rectangleRect.left + OFFSET ) deltaX = -moveDistance;
 
                     if (event.key === "ArrowRight")
-                        if(imageRect.left + moveDistance  < rectangleRect.left + 420 ) deltaX = moveDistance;
-
-                    // deltaX = moveDistance;
-
+                        if(imageRect.left + moveDistance  < rectangleRect.left + RECTANGLE_WIDTH - IMAGE_WIDTH - OFFSET)
+                            deltaX = moveDistance;
 
                     // Calculate the new position
                     const newLeft = currentLeft + deltaX;
