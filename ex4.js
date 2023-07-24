@@ -21,6 +21,16 @@
             // Listen for the change event on the file input
             fileInput.addEventListener("change", play.handleImageSelection);
         });
+
+        document.addEventListener("click", function (event) {
+            // Get the clicked element
+            const clickedElement = event.target;
+
+            // Check if the clicked element is not the rectangle or any image with the "emphasized-image" class
+            if (!clickedElement.classList.contains("rectangle") && !clickedElement.classList.contains("emphasized-image")) {
+                focusedImageId = null; // Reset focusedImageId to null to stop image movement
+            }
+        });
     })
 
     const play = function () {
@@ -66,6 +76,16 @@
         // Function to focus the image for keyboard control
         function focusImage(imageId) {
             focusedImageId = imageId;
+
+            // Remove the "selected-image" class from any previously focused image
+            const prevSelectedImage = document.querySelector(".selected-image");
+            if (prevSelectedImage) {
+                prevSelectedImage.classList.remove("selected-image");
+            }
+
+            // Add the "selected-image" class to the currently focused image
+            const focusedImage = images[focusedImageId];
+            focusedImage.classList.add("selected-image");
 
             // Add keyboard control for moving the focused image
             document.addEventListener("keydown", handleArrowKey);
