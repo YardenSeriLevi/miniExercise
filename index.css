@@ -7,14 +7,6 @@
     position: relative; /* Ensure position is set to relative */
 }
 
-/* Media query for screens smaller than or equal to mobile size */
-/*@media (max-width: 767.98px) {*/
-/*    .rectangle {*/
-/*        width: 340px;*/
-/*        height: 200px;*/
-/*    }*/
-/*}*/
-
 .emphasized-text {
     font-weight: bold; /* You can use other styles like italic, underline, etc. */
     color: blue; /* You can change the color to your desired emphasis color */

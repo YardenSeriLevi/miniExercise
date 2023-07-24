@@ -22,15 +22,6 @@
             fileInput.addEventListener("change", play.handleImageSelection);
         });
 
-        document.addEventListener("click", function (event) {
-            // Get the clicked element
-            const clickedElement = event.target;
-
-            // Check if the clicked element is not the rectangle or any image with the "emphasized-image" class
-            if (!clickedElement.classList.contains("rectangle") && !clickedElement.classList.contains("emphasized-image")) {
-                focusedImageId = null; // Reset focusedImageId to null to stop image movement
-            }
-        });
     })
 
     const play = function () {
